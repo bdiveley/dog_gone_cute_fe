@@ -1,5 +1,3 @@
-
-
 function getAllBreeds() {
   $.ajax({
     type: 'GET',
@@ -16,9 +14,33 @@ function getAllBreeds() {
           })
         }
       })
-      document.getElementById("loaded-breeds").innerHTML = `<select id='all-breeds'><option>Random</option><option>Cutest</option>${allBreeds}</select>`;
+      document.getElementById("loaded-breeds").innerHTML = `<select id='all-breeds'><option>Pick an Option</option><option>Random</option><option>Cutest</option>${allBreeds}</select>`;
+    }
+  })
+}
+
+function getRandomPicture() {
+  $.ajax({
+    type: 'GET',
+    url: "https://dog.ceo/api/breeds/image/random",
+    success: function(result) {
+      var image = result.message
+      document.getElementById("dog-image").innerHTML = `<img src=${image}>`
+    },
+    error: function(response) {
+      alert(response.responseJSON.error);
     }
   })
 }
 
 getAllBreeds();
+
+$( document ).ready(function() {
+
+  $( "#all-breeds" ).change(function() {
+    var chosen = $( "#all-breeds option:selected" ).val();
+    if(chosen == "Random") {
+      getRandomPicture();
+    }
+  });
+})
