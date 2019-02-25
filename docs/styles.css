@@ -14,5 +14,23 @@ nav {
 
 h1 {
   margin: 0;
+}
 
+#loaded-breeds {
+  display: block;
+  padding: 5px 0 10px 10px;
+  background-color: #232f3e;
+  color: white;
+  font-size: 20px;
+}
+
+body {
+  background-color: #F0F0F0;
+}
+
+.silhouettes {
+  padding: 5px 0 0 0;
+  width: 300px;
+  height: auto;
+  display: inline-block;
 }

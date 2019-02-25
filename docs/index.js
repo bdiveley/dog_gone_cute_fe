@@ -1,32 +1,24 @@
-// const Game = require('./Game');
-//
-// const canvas = document.querySelector('#game');
-// const ctx = canvas.getContext('2d');
-// const game = new Game(ctx);
-//
-// // Start animation loop
-// window.requestAnimationFrame(gameLoop);
-//
-// function gameLoop () {
-//
-//   if (game.isOver()) {
-//     console.log('Game Over');
-//
-//   } else {
-//     // clear previous frame
-//     ctx.clearRect(0, 0, canvas.width, canvas.height);
-//
-//     // draw this frame
-//     game.animate();
-//   }
-//
-//   // prepare to draw next frame
-//   window.requestAnimationFrame(gameLoop)
-// }
-//
-// // Add key press event handler
-// document.addEventListener('keydown', handleKeyPress);
-//
-// function handleKeyPress(e) {
-//   game.handleKeyPress(e);
-// }
+
+
+function getAllBreeds() {
+  $.ajax({
+    type: 'GET',
+    url: "https://dog.ceo/api/breeds/list/all",
+    success: function(result) {
+      var breeds = result.message
+      var allBreeds = ""
+      Object.keys(breeds).forEach( function(breed) {
+        if(breeds[`${breed}`].length === 0) {
+          allBreeds += `<div class='breed'><h2>${breed}</h2></div>`
+        } else {
+          breeds[`${breed}`].forEach( function(name) {
+            allBreeds += `<option>${name} ${breed}</option>`
+          })
+        }
+      })
+      document.getElementById("loaded-breeds").innerHTML = `<select id='all-breeds'><option>Random</option><option>Cutest</option>${allBreeds}</select>`;
+    }
+  })
+}
+
+getAllBreeds();
