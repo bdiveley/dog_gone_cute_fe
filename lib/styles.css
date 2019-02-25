@@ -3,3 +3,11 @@
   margin: auto;
   display: block;
 }
+
+nav {
+  display: block;
+  margin: auto;
+  background-color: #232f3e;
+  color: white;
+  font-size: 20px;
+}
