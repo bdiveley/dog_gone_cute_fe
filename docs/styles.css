@@ -14,5 +14,12 @@ nav {
 
 h1 {
   margin: 0;
+}
 
+#loaded-breeds {
+  display: block;
+  padding: 10px 0 10px 10px;
+  background-color: #232f3e;
+  color: white;
+  font-size: 20px;
 }
