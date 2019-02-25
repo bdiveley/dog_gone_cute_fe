@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <title>Dog-Gone-Cute</title>
   <link href='docs/styles.css' rel='stylesheet' type='text/css'/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
   <nav>
@@ -13,7 +14,18 @@
   </span>
   </nav>
   <div id="loaded-breeds"></div>
-  <div id="dog-image"></div>
+  <div id="dog-display">
+    <div id="dog-stats" class="hidden">
+      <span>Rate this Doggo:  </span>
+      <span class="fa fa-heart" id=heart-1></span>
+      <span class="fa fa-heart" id=heart-2></span>
+      <span class="fa fa-heart" id=heart-3></span>
+      <span class="fa fa-heart" id=heart-4></span>
+      <span class="fa fa-heart" id=heart-5></span>
+    </div>
+    <div id="dog-image"></div>
+  </div>
+
   <script
     src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'>
   </script>
