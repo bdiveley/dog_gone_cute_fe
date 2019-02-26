@@ -7,10 +7,10 @@ function getAllBreeds() {
       var allBreeds = ""
       Object.keys(breeds).forEach( function(breed) {
         if(breeds[`${breed}`].length === 0) {
-          allBreeds += `<div class='breed'><h2>${breed}</h2></div>`
+          allBreeds += `<option>${breed}</option>`
         } else {
           breeds[`${breed}`].forEach( function(name) {
-            allBreeds += `<option>${name} ${breed}</option>`
+            allBreeds += `<option>${name}-${breed}</option>`
           })
         }
       })
@@ -28,6 +28,32 @@ function getRandomPicture() {
       document.getElementById("dog-image").innerHTML = `<div class='container'><img id='${image}' src=${image}></div>`
       $("#dog-stats").show();
       $("#random").show();
+      $("#filter-btns").hide();
+    },
+    error: function(response) {
+      alert(response.responseJSON.error);
+    }
+  })
+}
+
+function getRandomBreed(breed) {
+  if (breed.includes("-")) {
+    var type = breed.split("-")[0]
+    var brand = breed.split("-")[1]
+    var endpoint = `https://dog.ceo/api/breed/${brand}/${type}/images`
+  } else {
+    var endpoint = `https://dog.ceo/api/breed/${breed}/images`
+  }
+  $.ajax({
+    type: 'GET',
+    url: endpoint,
+    success: function(result) {
+      var images = result.message
+      var randomIndex = Math.floor(Math.random() * images.length);
+      var image = images[randomIndex]
+      document.getElementById("dog-image").innerHTML = `<div class='container'><img id='${image}' src=${image}></div>`
+      $("#dog-stats").show();
+      $("#random").hide();
       $("#filter-btns").hide();
     },
     error: function(response) {
@@ -111,6 +137,8 @@ $( document ).ready(function() {
       getRandomPicture();
     } else if (chosen == "Cutest") {
       getAllCutest();
+    } else {
+      getRandomBreed(chosen)
     }
   });
 
