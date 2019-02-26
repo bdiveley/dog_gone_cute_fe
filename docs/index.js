@@ -40,7 +40,7 @@ function getRandomBreed(breed) {
   if (breed.includes("-")) {
     var type = breed.split("-")[0]
     var brand = breed.split("-")[1]
-    var endpoint = `https://dog.ceo/api/breed/${type}/${brand}/images`
+    var endpoint = `https://dog.ceo/api/breed/${brand}/${type}/images`
   } else {
     var endpoint = `https://dog.ceo/api/breed/${breed}/images`
   }
