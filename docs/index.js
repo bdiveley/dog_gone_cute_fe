@@ -34,6 +34,14 @@ function getRandomPicture() {
   })
 }
 
+function getScore(heartId) {
+  var scoreArray = heartId.split("-");
+  var score = scoreArray[scoreArray.length-1];
+  var url = document.getElementById("dog-image").firstChild.id
+  alert(`Your score of ${score} has been recorded`)
+  // postDogPhoto(score, url)
+};
+
 getAllBreeds();
 
 $( document ).ready(function() {
@@ -46,9 +54,27 @@ $( document ).ready(function() {
   });
 
   $( "#heart-1" ).click(function() {
-    var heart = document.getElementById("heart-1").id;
-    var score = heart.split("-").length-1;
-    var url = document.getElementById("dog-image").firstChild.id
+    var heartId = document.getElementById("heart-1").id;
+    getScore(heartId)
   });
 
+  $( "#heart-2" ).click(function() {
+    var heartId = document.getElementById("heart-2").id;
+    getScore(heartId)
+  });
+
+  $( "#heart-3" ).click(function() {
+    var heartId = document.getElementById("heart-3").id;
+    getScore(heartId)
+  });
+
+  $( "#heart-4" ).click(function() {
+    var heartId = document.getElementById("heart-4").id;
+    getScore(heartId)
+  });
+
+  $( "#heart-5" ).click(function() {
+    var heartId = document.getElementById("heart-5").id;
+    getScore(heartId)
+  });
 })
