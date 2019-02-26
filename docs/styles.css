@@ -12,13 +12,13 @@ nav {
   font-size: 20px;
 }
 
-h1 {
+h1, h3 {
   margin: 0;
 }
 
 #loaded-breeds {
   display: block;
-  padding: 5px 0 10px 10px;
+  padding: 15px 0 10px 10px;
   background-color: #232f3e;
   color: white;
   font-size: 20px;
@@ -36,7 +36,7 @@ body {
 }
 
 #dog-image {
-  margin: 10px;
+  width: auto;
 }
 
 #dog-image img {
@@ -44,4 +44,24 @@ body {
   -webkit-box-shadow: 3px 3px 3px #777;
   -moz-box-shadow: 3px 3px 3px #777;
   box-shadow: 3px 3px 3px #777;
+}
+
+#dog-stats {
+  margin: 10px 0 0 10px;
+}
+
+#dog-display {
+  display: block;
+}
+
+.checked {
+  color: red;
+}
+
+.hidden {
+  display: none;
+}
+
+.fa-heart:hover {
+  color: red;
 }

@@ -25,13 +25,22 @@ function getRandomPicture() {
     url: "https://dog.ceo/api/breeds/image/random",
     success: function(result) {
       var image = result.message
-      document.getElementById("dog-image").innerHTML = `<img src=${image}>`
+      document.getElementById("dog-image").innerHTML = `<img id='${image}' src=${image}>`
+      $("#dog-stats").show();
     },
     error: function(response) {
       alert(response.responseJSON.error);
     }
   })
 }
+
+function getScore(heartId) {
+  var scoreArray = heartId.split("-");
+  var score = scoreArray[scoreArray.length-1];
+  var url = document.getElementById("dog-image").firstChild.id
+  alert(`Your score of ${score} has been recorded`)
+  // postDogPhoto(score, url)
+};
 
 getAllBreeds();
 
@@ -42,5 +51,30 @@ $( document ).ready(function() {
     if(chosen == "Random") {
       getRandomPicture();
     }
+  });
+
+  $( "#heart-1" ).click(function() {
+    var heartId = document.getElementById("heart-1").id;
+    getScore(heartId)
+  });
+
+  $( "#heart-2" ).click(function() {
+    var heartId = document.getElementById("heart-2").id;
+    getScore(heartId)
+  });
+
+  $( "#heart-3" ).click(function() {
+    var heartId = document.getElementById("heart-3").id;
+    getScore(heartId)
+  });
+
+  $( "#heart-4" ).click(function() {
+    var heartId = document.getElementById("heart-4").id;
+    getScore(heartId)
+  });
+
+  $( "#heart-5" ).click(function() {
+    var heartId = document.getElementById("heart-5").id;
+    getScore(heartId)
   });
 })
