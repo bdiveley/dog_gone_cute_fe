@@ -27,6 +27,7 @@ function getRandomPicture() {
       var image = result.message
       document.getElementById("dog-image").innerHTML = `<div class='container'><img id='${image}' src=${image}></div>`
       $("#dog-stats").show();
+      $("#filter-btns").hide();
     },
     error: function(response) {
       alert(response.responseJSON.error);
@@ -40,6 +41,7 @@ function getAllCutest() {
     url: "https://morning-refuge-91147.herokuapp.com/api/v1/dogs",
     success: function(result) {
       $("#dog-stats").hide();
+      $("#filter-btns").show();
       var allDogs = ""
       var dogs = result.data
       if (dogs.length == 0) {

@@ -91,3 +91,15 @@ body {
 .fa-heart:hover {
   color: red;
 }
+
+button {
+  border-radius: 10px;
+  margin: 10px 0 0 0;
+  background-color: #232f3e;
+  color: white;
+  font-size: 15px;
+}
+
+button:hover {
+  background-color: red;
+}
