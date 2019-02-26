@@ -25,7 +25,8 @@ function getRandomPicture() {
     url: "https://dog.ceo/api/breeds/image/random",
     success: function(result) {
       var image = result.message
-      document.getElementById("dog-image").innerHTML = `<img src=${image}>`
+      document.getElementById("dog-image").innerHTML = `<img id='${image}' src=${image}>`
+      $("#dog-stats").show();
     },
     error: function(response) {
       alert(response.responseJSON.error);
@@ -43,4 +44,11 @@ $( document ).ready(function() {
       getRandomPicture();
     }
   });
+
+  $( "#heart-1" ).click(function() {
+    var heart = document.getElementById("heart-1").id;
+    var score = heart.split("-").length-1;
+    var url = document.getElementById("dog-image").firstChild.id
+  });
+
 })
