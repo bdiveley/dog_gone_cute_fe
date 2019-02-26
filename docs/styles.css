@@ -1,9 +1,3 @@
-#game {
-  border: 1px dashed;
-  margin: auto;
-  display: block;
-}
-
 nav {
   display: block;
   padding: 10px 0 0 10px;
@@ -35,27 +29,59 @@ body {
   display: inline-block;
 }
 
-#dog-image {
-  width: auto;
-}
-
 #dog-image img {
+  display: block;
+  width: 100%;
+  height: auto;
   border: 10px solid #fff;
   -webkit-box-shadow: 3px 3px 3px #777;
   -moz-box-shadow: 3px 3px 3px #777;
   box-shadow: 3px 3px 3px #777;
 }
 
+/* #dog-image {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 2em;
+  grid-gap: .5em;
+} */
+
+.container {
+  position: relative;
+  width: 50%;
+}
+
+.container:hover .overlay {
+  opacity: 1;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #008CBA;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
 #dog-stats {
   margin: 10px 0 0 10px;
-}
-
-#dog-display {
-  display: block;
-}
-
-.checked {
-  color: red;
 }
 
 .hidden {
