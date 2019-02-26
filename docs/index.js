@@ -55,9 +55,30 @@ function getAllCutest() {
           document.getElementById("dog-image").innerHTML = allDogs
         })
       }
-    },
-    error: function(response) {
-      alert(response.responseJSON.error);
+    }
+  })
+}
+
+function getLeastCutest() {
+  $.ajax({
+    type: 'GET',
+    url: "https://morning-refuge-91147.herokuapp.com/api/v1/dogs?order=asc",
+    success: function(result) {
+      $("#dog-stats").hide();
+      $("#filter-btns").show();
+      var allDogs = ""
+      var dogs = result.data
+      if (dogs.length == 0) {
+        alert("No dogs have been scored")
+        $("#dog-stats").show();
+      } else {
+        dogs.forEach( function(dog) {
+          var dogInfo = dog.attributes
+          var average_score = Math.round(10*(dogInfo.ave_score))/10;
+          allDogs += `<div class='container'><img id='${dogInfo.photo}' src=${dogInfo.photo}><div class='overlay'><div class='text'> ${dogInfo.breed.name}:<br>${average_score} hearts</div></div></div>`
+          document.getElementById("dog-image").innerHTML = allDogs
+        })
+      }
     }
   })
 }
@@ -89,6 +110,14 @@ $( document ).ready(function() {
     } else if (chosen == "Cutest") {
       getAllCutest();
     }
+  });
+
+  $( "#least-cute" ).click(function() {
+      getLeastCutest();
+  });
+
+  $( "#most-cute" ).click(function() {
+      getAllCutest();
   });
 
   $( "#heart-1" ).click( function(event) {
